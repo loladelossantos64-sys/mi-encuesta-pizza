@@ -1,24 +1,121 @@
-# Compiled class file
-*.class
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué pizza eres?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #fff3e0;
+    }
+    form {
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: left;
+      background: #ffe0b2;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ff7043;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #f4511e;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #d84315;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍕 ¿Qué pizza eres? 🍕</h1>
+  <p>Responde las preguntas y descubre tu pizza ideal</p>
 
-# Log file
-*.log
+  <form id="pizzaForm">
+    <label>1. ¿Qué sabor prefieres?</label><br>
+    <select id="sabor" required>
+      <option value="">Selecciona una opción</option>
+      <option>Dulce</option>
+      <option>Salado</option>
+      <option>Picante</option>
+      <option>Suave</option>
+    </select><br><br>
 
-# BlueJ files
-*.ctxt
+    <label>2. ¿Qué tipo de plan te gusta más?</label><br>
+    <select id="plan" required>
+      <option value="">Selecciona una opción</option>
+      <option>Salir de fiesta</option>
+      <option>Quedarte en casa viendo pelis</option>
+      <option>Hacer deporte</option>
+      <option>Viajar</option>
+    </select><br><br>
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+    <label>3. ¿Qué ingrediente no puede faltar en tu pizza?</label><br>
+    <select id="ingrediente" required>
+      <option value="">Selecciona una opción</option>
+      <option>Queso extra</option>
+      <option>Peperoni</option>
+      <option>Verduras</option>
+      <option>Piña 🍍</option>
+      <option>Carne</option>
+    </select><br><br>
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+    <button type="button" onclick="mostrarPizza()">Descubrir mi pizza</button>
+  </form>
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+  <div id="resultado"></div>
+
+  <script>
+    function mostrarPizza() {
+      const sabor = document.getElementById("sabor").value;
+      const plan = document.getElementById("plan").value;
+      const ingrediente = document.getElementById("ingrediente").value;
+
+      if (!sabor || !plan || !ingrediente) {
+        alert("Por favor, responde todas las preguntas.");
+        return;
+      }
+
+      // Lista ampliada de pizzas
+      const pizzas = [
+        "🍕 **Pizza Margarita**: Simple, clásica y siempre confiable. ¡Como tú!",
+        "🍍 **Pizza Hawaiana**: Dulce y atrevida, no todos te entienden, pero los que lo hacen te adoran.",
+        "🌶️ **Pizza Diavola**: Picante y llena de energía, ¡siempre lista para la acción!",
+        "🧀 **Pizza Cuatro Quesos**: Intensa y reconfortante, nunca pasas desapercibido.",
+        "🥦 **Pizza Veggie**: Saludable, colorida y llena de buenas vibras.",
+        "🍖 **Pizza Barbacoa**: Potente y sabrosa, eres la estrella de todas las reuniones.",
+        "🍤 **Pizza de Mariscos**: Refinada y diferente, siempre sorprendes a los demás.",
+        "🥩 **Pizza de Carne Suprema**: Fuerte y con carácter, no le temes a nada.",
+        "🍄 **Pizza de Champiñones**: Tranquila y elegante, perfecta para los momentos zen.",
+        "🍫 **Pizza Dulce**: Única y especial, porque no temes ser diferente.",
+        "🌽 **Pizza Mexicana**: Alegre, llena de sabor y con un toque explosivo de picante.",
+        "🥔 **Pizza de Patata y Bacon**: Confortable y acogedora, como un abrazo calientito."
+      ];
+
+      // Selección aleatoria
+      const pizzaAleatoria = pizzas[Math.floor(Math.random() * pizzas.length)];
+
+      // Mostrar resultado
+      document.getElementById("resultado").innerHTML = `
+        Según tus respuestas, eres:<br><br>
+        <strong>${pizzaAleatoria}</strong>
+      `;
+    }
+  </script>
+</body>
+</html>
+
